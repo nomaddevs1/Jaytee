@@ -7,7 +7,10 @@ app.use(cors());
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   console.log(username, password);
-  res.send([username]);
+  if (username) {
+    res.send([username]);
+  }
+  res.send({ message: "Something went wrong" });
 });
 app.listen(5000, () => {
   console.log("Server started");
